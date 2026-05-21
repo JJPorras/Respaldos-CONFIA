@@ -103,7 +103,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="**The below is an example of a subprocess, the design will be completely dependent on the process. Start and End log messages are mandatory. Components should be invoked and business exceptions should be thrown at this level. Business logic should be performed at this level. It may be necessary to invoke the Config file or a Dictionary here is a large number of input arguments are required but this will depend on design.**&#xA;&#xA;Description: [Add description]" DisplayName="&quot;Diferencial_12_Upload&quot;" sap:VirtualizedContainerService.HintSize="1046,486" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Description: [Add description]" DisplayName="&quot;Diferencial_12_Upload&quot;" sap:VirtualizedContainerService.HintSize="952,838" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser" />
       <Variable x:TypeArguments="x:String" Name="awsPassString" />
