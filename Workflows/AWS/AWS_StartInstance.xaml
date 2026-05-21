@@ -1,0 +1,337 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Component" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Browser" Type="InArgument(ui:Browser)" />
+    <x:Property Name="in_InstanceID" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1498,1104</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ComponentLayerTemplate_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Workflow: AWS_StartInstance&#xA;Descripcion: Enciende la instancia EC2 Confia Respaldos en AWS.&#xA;Navega a EC2, busca la instancia por ID, ejecuta Iniciar instancia&#xA;y hace polling cada 20s hasta confirmar estado En ejecucion (max 15 intentos).&#xA;Argumentos: in_Browser (Browser), in_InstanceID (String)" DisplayName="AWS_StartInstance" sap:VirtualizedContainerService.HintSize="1404,4384" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ComponentName">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">**UPDATE TO COMPONENT NAME**</Literal>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log START" sap:VirtualizedContainerService.HintSize="660,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Starting workflow: AWS_StartInstance - Encendiendo instancia: &quot; + in_InstanceID]" />
+    <Sequence DisplayName="Precondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="660,122" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Sequence>
+    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="660,3699" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="AWS_StartInstance" sap:VirtualizedContainerService.HintSize="626,3607" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Name="checkCount">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:Int32" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:Boolean" Name="instanceRunning" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence DisplayName="SEQ - AWS Start Instance" sap:VirtualizedContainerService.HintSize="592,3524" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch DisplayName="TRY - Iniciar Instancia EC2" sap:VirtualizedContainerService.HintSize="558,3441" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="556,3096" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome Página de inicio de la Consola  Página" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="522,3036" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V2">
+                  <uix:NApplicationCard.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,2842" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'us-east-1.console.aws.a…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,246" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Text="[&quot;https://us-east-2.console.aws.amazon.com/ec2/home?region=us-east-2#Instances:&quot; + &quot;[k(enter)]&quot;]" Version="V5">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="us-east-1.console.aws.amazon.com/console/home" CVScreenId="a84e59e5-c291-44a3-95a1-48c3d85100bb" CvElementArea="125, 53, 659, 35" CvType="InputBox" DesignTimeRectangle="166, 59, 575, 24" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Página de inicio de la Consola | Página de inicio de la consola *' role='pane' /&gt;&lt;ctrl name='Barra de direcciones y de búsqueda' role='editable text' /&gt;" Guid="1d308d6c-f5ec-472d-b1ba-187e6a2f36fa" InformativeScreenshot="518316e50202b90e16419ffe09d70d29.jpg" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Página de inicio de la Consola | Página de inicio de la consola *' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                          </uix:NTypeInto.Target>
+                          <uix:NTypeInto.VerifyOptions>
+                            <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                              <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            </uix:VerifyExecutionTypeIntoOptions>
+                          </uix:NTypeInto.VerifyOptions>
+                        </uix:NTypeInto>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,285" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGoToUrl DisplayName="Go To URL - amazon.com" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Url="https://us-east-2.console.aws.amazon.com/ec2/home?region=us-east-2#Instances:" Version="V5" />
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                        </ui:CommentOut>
+                        <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="486,123" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type - Buscar instancia por ID" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,246" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Text="[in_InstanceID + &quot;[k(enter)]&quot;]" Version="V5">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="96124080-c520-4ecf-92a2-de527049b92a" CvElementArea="382, 247, 512, 24" CvType="InputBox" DesignTimeRectangle="383, 248, 510, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='INPUT' type='text' class='awsui_input_2rhyz_1ml9e_149 awsui_input-has-icon-left_2rhyz_1ml9e_275' placeholder='Buscar Instancia por atributo o etiqueta (case-sensitive)' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="65e800d3-99cb-4a13-99b4-ed2eeb1d9cb3" InformativeScreenshot="f2c593f306332b3e535e44d8bc68ec79.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CVScreenId="96124080-c520-4ecf-92a2-de527049b92a" CvElementArea="213, 246, 162, 25" CvType="InputBox" DesignTimeRectangle="224, 251, 120, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl parentid='trigger:r14:' tag='SPAN' type='' class='awsui_placeholder_dwuol_1u5uh_145 awsui_trigger_dwuol_1u5uh_172' aaname='Elegir conjunto de filtros' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Elegir conjunto de filtros' /&gt;" Guid="382e1faa-9b5c-4f06-8dc2-93d0da153c14" SearchSteps="FuzzySelector, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="486,123" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Seleccionar instancia" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,194" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="09c730e5-964d-447d-8427-6d2e2a220af1" CvElementArea="222, 284, 16, 16" CvType="CheckBox" DesignTimeRectangle="223, 285, 13, 13" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl aria-labelledby='heading:r6:' tag='TABLE' matching:aria-labelledby='fuzzy' fuzzylevel:aria-labelledby='0.0' /&gt;&lt;webctrl type='checkbox' tag='INPUT' class='awsui_native-input_1wepg_1ri2i_162 awsui_native-input_13tpe_9w8pd_6' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="65207127-39ee-4e31-aadf-7b482a36a1bd" InformativeScreenshot="8818ad24800fe6cfcc89408697f98707.jpg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CVScreenId="09c730e5-964d-447d-8427-6d2e2a220af1" CvTextArea="257, 285, 89, 14" CvTextArgument="Confia Respaldos" CvType="Text" DesignTimeRectangle="247, 280, 222, 24" FuzzySelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl aria-labelledby='heading:r6:' tag='TABLE' matching:aria-labelledby='fuzzy' fuzzylevel:aria-labelledby='0.0' /&gt;&lt;webctrl aaname='Confía Respaldos' type='' tag='DIV' class='awsui_body-cell-content_c6tup_1oryx_160' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Confía Respaldos' /&gt;" Guid="84dce41d-2f1d-41f1-aea0-38c164d9559b" SearchSteps="FuzzySelector, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Menu Estado de la instancia" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,194" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="09c730e5-964d-447d-8427-6d2e2a220af1" CvElementArea="593, 174, 161, 25" CvType="InputBox" DesignTimeRectangle="730, 179, 13, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' /&gt;&lt;webctrl idx='2' parentid='awsui-button-dropdown__trigger:rf:' tag='SPAN' /&gt;" Guid="4f1a8d42-b26e-45f6-a313-1f2dbf05487d" InformativeScreenshot="85080cf6c3dc477cfa1b35dc5f9b8e31.jpg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="486,123" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Iniciar instancia'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,194" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="b7af23d8-2198-4d4e-8977-505669b3921b" CvTextArea="610, 229, 81, 12" CvTextArgument="Iniciar instancia" CvType="Text" DesignTimeRectangle="612, 228, 78, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' /&gt;&lt;webctrl aaname='Iniciar instancia' parentid='dropdown:re:' tag='DIV' /&gt;" Guid="33556c44-0695-4881-bd7c-b6dcbbdfcc2c" InformativeScreenshot="11381729fb805135de2889a81a20c732.jpg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="486,123" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                        <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[instanceRunning = False And checkCount &lt; 15]" DisplayName="WHILE - Esperar instancia Running" sap:VirtualizedContainerService.HintSize="486,931" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                          <ui:InterruptibleWhile.Body>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,809" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Delay Duration="00:00:20" sap:VirtualizedContainerService.HintSize="416,123" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Refresh tabla EC2" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V5">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="b9ed33e8-5278-4ab7-a85e-1e62dace3f2b" CvElementArea="483, 174, 26, 26" CvType="Icon" DesignTimeRectangle="490, 179, 12, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;span' parentid=':r4:' tag='SPAN' /&gt;" Guid="19af13e3-520b-420b-a751-746c9959a373" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAYAAACEYr13AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAG2SURBVDhPrVTfK0NhGD5IKMqlWi6UKzeIG0nc+B9cIK79XHLhV1KEFfl1LyMXmpBcKArXKyEXStnZZjvabMNmY+fs0fuufdt0lp9PfXXO+z7Pc77vfc/3SqqqgdbQng85vTZ0rHthOQ9B9kWhauBFz5bzIOeIQ9yETrp0RlAz6+IkEb8CcYhLGtJKhhEHlk+fP/O+BGlIK/1GnABppc9BwtltBJ0bXlTNuJBvlFE+4US72YNr9zvnq2dcgptm8BTW0LrmgdRtQ8XkPZ/VuO1D5bSLY7TGD/yZDdrMcXHX1iOiWmoGcPhV1M+7OW8YdYi4MNi9CHGyZdUjkqloWlRQP6egwCgjq8cm4sKgeUVB0YCdj6GHxgWFV92cGw3ziogLg7JxJ2/xpxAGtDUq4HewdJJsvTCgSteaktXNhHc1hmy9GlDLcvtk3DzEe50Jm9YgFzsBYWC1v/FFoR6/RGKCkIq7xyiKB+0oGdZpI2HqMMDupWNO7FyEEInGjQKvGv+2hQMy549vwkKTZhCLAaajJ94JEfP6Zf6dqe/0Tl/fv3pNlfzDZfrzdf7zQNEfaUGdkRbSHWkf5yx15hUNETAAAAAASUVORK5CYII=" InformativeScreenshot="22e1e173116450c5bca45ed4e3eb81a2.jpg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="416,123" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                              <uix:NCheckElement DelayBefore="0" DisplayName="Check Element 'En ejecución'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,143" sap2010:WorkflowViewState.IdRef="NCheckElement_1" Result="[instanceRunning]" ScopeIdentifier="ce09b0b4-ed15-4c01-92d5-3cc2401ffc3d" Version="V5">
+                                <uix:NCheckElement.Target>
+                                  <uix:TargetAnchorable BrowserURL="us-east-2.console.aws.amazon.com/ec2/home" CVScreenId="ba1d7b2b-751b-4088-b15c-df82ac4b609e" CvTextArea="658, 341, 65, 15" CvTextArgument="En ejecución" CvType="Text" DesignTimeRectangle="643, 340, 79, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='compute-react-frame' tag='IFRAME' /&gt;&lt;webctrl aria-labelledby='heading:r6:' tag='TABLE' /&gt;&lt;webctrl aaname='En ejecución' tableRow='2' tag='SPAN' /&gt;" Guid="6eca6bbc-e0b5-4907-8a6d-18d4e4112a58" InformativeScreenshot="9fd5a1be76c992a315c1c43555064ed8.jpg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Instancias | EC2 | us-east-2' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NCheckElement.Target>
+                              </uix:NCheckElement>
+                              <Assign DisplayName="Assign - Incrementar contador" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[checkCount]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[checkCount + 1]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ui:InterruptibleWhile.Body>
+                        </ui:InterruptibleWhile>
+                      </Sequence>
+                    </ActivityAction>
+                  </uix:NApplicationCard.Body>
+                  <uix:NApplicationCard.OCREngine>
+                    <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                      <ActivityFunc.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                      </ActivityFunc.Argument>
+                    </ActivityFunc>
+                  </uix:NApplicationCard.OCREngine>
+                  <uix:NApplicationCard.TargetApp>
+                    <uix:TargetApp Area="1912, -8, 1040, 736" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="426a821a47c1f09efa94a8161e3ad9ec.jpg" Selector="&lt;html app='chrome.exe' title='Página de inicio de la Consola | Página de inicio de la consola | us-east-1' /&gt;" Url="https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#" Version="V3">
+                      <uix:TargetApp.Arguments>
+                        <InArgument x:TypeArguments="x:String" />
+                      </uix:TargetApp.Arguments>
+                      <uix:TargetApp.WorkingDirectory>
+                        <InArgument x:TypeArguments="x:String" />
+                      </uix:TargetApp.WorkingDirectory>
+                    </uix:TargetApp>
+                  </uix:NApplicationCard.TargetApp>
+                </uix:NApplicationCard>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="556,90" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+            <TryCatch.Finally>
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="556,90" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </TryCatch.Finally>
+          </TryCatch>
+        </Sequence>
+      </Sequence>
+    </Sequence>
+    <Sequence DisplayName="Postcondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="660,122" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="660,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: AWS_StartInstance - Instancia en ejecucion&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; padding:0; background-color:#f0f4f8; font-family: Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f4f8; padding: 30px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <tr>
+            <td style="background-color:#1F3864; padding: 28px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h1 style="color:#ffffff; margin:0; font-size:22px; font-weight:bold;">Confia CR</h1>
+                    <p style="color:#a8c4e0; margin:4px 0 0 0; font-size:13px;">Sistema Automatizado de Respaldos</p>
+                  </td>
+                  <td align="right">
+                    <span style="background-color:#2E75B6; color:#ffffff; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:bold;">RPA</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:_COLOR_ESTADO_; padding: 16px 40px;">
+              <p style="color:#ffffff; margin:0; font-size:15px; font-weight:bold;">_ICONO_ESTADO_ _TITULO_</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px 40px;">
+              <p style="color:#444; font-size:14px; margin:0 0 20px 0;">El robot de respaldos ha ejecutado una accion automatizada. A continuacion el detalle:</p>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse; margin-bottom:24px;">
+                <tr style="background-color:#1F3864;">
+                  <td style="padding:10px 16px; color:#ffffff; font-size:13px; font-weight:bold; width:40%;">Campo</td>
+                  <td style="padding:10px 16px; color:#ffffff; font-size:13px; font-weight:bold;">Detalle</td>
+                </tr>
+                <tr style="background-color:#f8f9fa;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Proceso</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; font-weight:bold; border-bottom:1px solid #e0e0e0;">_PROCESO_</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Tipo de respaldo</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; font-weight:bold; border-bottom:1px solid #e0e0e0;">_TIPO_RESPALDO_</td>
+                </tr>
+                <tr style="background-color:#f8f9fa;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Justificacion</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; border-bottom:1px solid #e0e0e0;">_JUSTIFICACION_</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Instancia AWS</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; border-bottom:1px solid #e0e0e0;">_INSTANCIA_</td>
+                </tr>
+                <tr style="background-color:#f8f9fa;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Servidor destino</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; border-bottom:1px solid #e0e0e0;">_SERVIDOR_</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px; border-bottom:1px solid #e0e0e0;">Fecha y hora</td>
+                  <td style="padding:10px 16px; color:#222; font-size:13px; border-bottom:1px solid #e0e0e0;">_FECHA_</td>
+                </tr>
+                <tr style="background-color:#f8f9fa;">
+                  <td style="padding:10px 16px; color:#555; font-size:13px;">Estado</td>
+                  <td style="padding:10px 16px; font-size:13px; font-weight:bold; color:_COLOR_TEXTO_ESTADO_;">_ESTADO_</td>
+                </tr>
+              </table>
+              _SECCION_ARCHIVOS_
+              <div style="background-color:#f0f7ff; border-left:4px solid #2E75B6; padding:14px 18px; border-radius:4px;">
+                <p style="color:#1F3864; font-size:13px; margin:0;">_MENSAJE_</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#f0f4f8; padding:20px 40px; border-top:1px solid #e0e0e0;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <p style="color:#888; font-size:11px; margin:0;">Este es un correo generado automaticamente por el RPA de Respaldos.</p>
+                    <p style="color:#888; font-size:11px; margin:4px 0 0 0;">Por favor no responder a este mensaje.</p>
+                  </td>
+                  <td align="right">
+                    <p style="color:#aaa; font-size:11px; margin:0;">Confia CR _ANIO_</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
