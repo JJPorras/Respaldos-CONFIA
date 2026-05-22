@@ -103,11 +103,15 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Description: [Add description]" DisplayName="&quot;Diferencial_12_Upload&quot;" sap:VirtualizedContainerService.HintSize="952,838" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Description: [Add description]" DisplayName="&quot;Diferencial_21_Upload&quot;" sap:VirtualizedContainerService.HintSize="1226,587" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser" />
       <Variable x:TypeArguments="x:String" Name="awsPassString" />
-      <Variable x:TypeArguments="x:String" Default="Diferencial_12_Upload" Name="SubprocessName" />
+      <Variable x:TypeArguments="x:String" Name="SubprocessName">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Diferencial_21_Upload</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Boolean" Name="backupsVerified" />
       <Variable x:TypeArguments="x:String" Name="verifyErrorMsg" />
     </Flowchart.Variables>
@@ -123,9 +127,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID12</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID8">
+    <FlowStep x:Name="__ReferenceID12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">330,127.16666666666667</av:Point>
@@ -211,11 +215,12 @@
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">335,535</av:Point>
                           <av:Size x:Key="ShapeSize">110,70</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">390,605 390,645</av:PointCollection>
+                          <av:PointCollection x:Key="ConnectorLocation">390,605 390,690</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Verify_Backups - Invoke Workflow File (Workflows\RDP\Verify_Backups.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Workflows\RDP\Verify_Backups.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="out_TransactionField1" />
                           <InArgument x:TypeArguments="x:String" x:Key="in_TransactionType">[in_TransactionType]</InArgument>
                           <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Verified">[backupsVerified]</OutArgument>
                           <OutArgument x:TypeArguments="x:String" x:Key="out_ErrorMessage">[verifyErrorMsg]</OutArgument>
@@ -227,36 +232,32 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
                       <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID5">
+                        <FlowDecision x:Name="__ReferenceID8" Condition="[backupsVerified = True]" DisplayName="Backups OK?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">335,645</av:Point>
-                              <av:Size x:Key="ShapeSize">110,70</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">445,680 495,680</av:PointCollection>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <av:Point x:Key="ShapeLocation">360,690</av:Point>
+                              <av:Size x:Key="ShapeSize">60,60</av:Size>
+                              <av:PointCollection x:Key="TrueConnector">420,720 545,720</av:PointCollection>
+                              <av:PointCollection x:Key="FalseConnector">390,750 390,820 545,820</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="FileZilla_Open - Invoke Workflow File (Workflows\FileZilla\FileZilla_Open.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Workflows\FileZilla\FileZilla_Open.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                            </ui:InvokeWorkflowFile.Arguments>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:InvokeWorkflowFile>
-                          <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                          <FlowDecision.True>
+                            <FlowStep x:Name="__ReferenceID5">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">495,645</av:Point>
+                                  <av:Point x:Key="ShapeLocation">545,685</av:Point>
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">605,680 655,680</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">655,720 705,720</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="FileZilla_Upload_Diferencial_12 - Invoke Workflow File (Workflows\FileZilla\FileZilla_Upload_Diferencial_12.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Workflows\FileZilla\FileZilla_Upload_Diferencial_12.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="FileZilla_Open - Invoke Workflow File (Workflows\FileZilla\FileZilla_Open.xaml)" sap:VirtualizedContainerService.HintSize="337,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Workflows\FileZilla\FileZilla_Open.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Connected" />
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_ErrorMessage" />
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutSmall" />
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutMedium" />
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutLarge" />
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -265,24 +266,20 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
                               <FlowStep.Next>
-                                <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                                <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_6">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">655,645</av:Point>
+                                      <av:Point x:Key="ShapeLocation">705,685</av:Point>
                                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">765,680 815,680</av:PointCollection>
+                                      <av:PointCollection x:Key="ConnectorLocation">815,720 865,720</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email_SendNotification - Invoke Workflow File (Workflows\Email\Email_SendNotification.xaml)" sap:VirtualizedContainerService.HintSize="339,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Workflows\Email\Email_SendNotification.xaml">
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="FileZilla_Upload_Diferencial_21 - Invoke Workflow File (Workflows\FileZilla\FileZilla_Upload_Diferencial_12.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Workflows\FileZilla\FileZilla_Upload_Diferencial_21.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Titulo">["Subida Diferencial 12 Iniciada - " + Now.ToString("dd/MM/yyyy HH:mm")]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_TipoRespaldo">[in_TransactionType]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Justificacion">Archivos verificados correctamente. Transferencia FTP iniciada.</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Estado">Exitoso</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Mensaje">Los 3 archivos diferenciales de las 12:00 fueron verificados y la transferencia FTP ha sido iniciada correctamente.</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_EmailTo">[in_EmailTo]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_TemplatePath">[in_TemplatePath]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">[in_EmailFrom]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionType" />
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutSmall" />
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutMedium" />
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutLarge" />
                                     </ui:InvokeWorkflowFile.Arguments>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -291,28 +288,126 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:InvokeWorkflowFile>
                                   <FlowStep.Next>
-                                    <FlowStep x:Name="__ReferenceID0">
+                                    <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">815,645</av:Point>
+                                          <av:Point x:Key="ShapeLocation">865,685</av:Point>
                                           <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                          <av:PointCollection x:Key="ConnectorLocation">310,191.16666666666669 310,221.16666666666669 308.3333333333333,221.16666666666669 308.3333333333333,243</av:PointCollection>
+                                          <av:PointCollection x:Key="ConnectorLocation">975,720 1025,720</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="334.00000000000006,143.00000000000003" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: &quot; + SubprocessName + &quot; - Subida diferencial 12 iniciada correctamente a las &quot; + Now.ToString(&quot;HH:mm:ss&quot;)]">
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email_SendNotification - Invoke Workflow File (Workflows\Email\Email_SendNotification.xaml)" sap:VirtualizedContainerService.HintSize="339,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Workflows\Email\Email_SendNotification.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Titulo">["Subida Diferencial 21 Iniciada - " + Now.ToString("dd/MM/yyyy HH:mm")]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_TipoRespaldo">[in_TransactionType]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Justificacion">Archivos verificados correctamente. Transferencia FTP iniciada.</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Estado">Exitoso</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Mensaje">Los 3 archivos diferenciales de las 21:00 fueron verificados y la transferencia FTP ha sido iniciada correctamente.</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_EmailTo">[in_EmailTo]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_TemplatePath">[in_TemplatePath]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">[in_EmailFrom]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                      </ui:LogMessage>
+                                      </ui:InvokeWorkflowFile>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID0">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">1025,685</av:Point>
+                                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                              <av:PointCollection x:Key="ConnectorLocation">310,191.16666666666669 310,221.16666666666669 308.3333333333333,221.16666666666669 308.3333333333333,243</av:PointCollection>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: &quot; + SubprocessName + &quot; - Subida diferencial 12 iniciada correctamente a las &quot; + Now.ToString(&quot;HH:mm:ss&quot;)]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
+                                        </FlowStep>
+                                      </FlowStep.Next>
                                     </FlowStep>
                                   </FlowStep.Next>
                                 </FlowStep>
                               </FlowStep.Next>
                             </FlowStep>
-                          </FlowStep.Next>
-                        </FlowStep>
+                          </FlowDecision.True>
+                          <FlowDecision.False>
+                            <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">545,785</av:Point>
+                                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">655,820 705,820</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email_SendNotification - Invoke Workflow File (Workflows\Email\Email_SendNotification.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Workflows\Email\Email_SendNotification.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Titulo">Error - Archivos de respaldo no encontrados</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_TipoRespaldo">[in_TransactionType]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Justificacion">Los archivos de respaldo no existen o no tienen fecha de hoy</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Estado">Error</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Mensaje">[verifyErrorMsg]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_EmailTo">[in_EmailTo]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_TemplatePath">[in_TemplatePath]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">[in_EmailFrom]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">705,785</av:Point>
+                                      <av:PointCollection x:Key="ConnectorLocation">815,820 865,820</av:PointCollection>
+                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RDP_Disconnect - Invoke Workflow File (Workflows\RDP\RDP_Disconnect.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Workflows\RDP\RDP_Disconnect.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:InvokeWorkflowFile>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">865,785</av:Point>
+                                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">975,820 1080,820 1080,755</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Throw DisplayName="Exception backups no encontrados" Exception="[New UiPath.Core.BusinessRuleException(&quot;Archivos de respaldo no encontrados: &quot; + verifyErrorMsg)]" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Throw_1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Throw>
+                                      <FlowStep.Next>
+                                        <x:Reference>__ReferenceID0</x:Reference>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowDecision.False>
+                        </FlowDecision>
                       </FlowStep.Next>
                     </FlowStep>
                   </FlowStep.Next>
@@ -331,5 +426,41 @@
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">1805,1265</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">1097.6666666666667,773.8283333333334 1097.6666666666667,803.8283333333334 1096,803.8283333333334 1096,825.6616666666666</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: &quot; + SubprocessName + &quot; - Subida diferencial 12 iniciada correctamente a las &quot; + Now.ToString(&quot;HH:mm:ss&quot;)]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">1785,1225</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">1070.6666666666667,735.8283333333334 1070.6666666666667,765.8283333333334 1069,765.8283333333334 1069,787.6616666666666</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: &quot; + SubprocessName + &quot; - Subida diferencial 12 iniciada correctamente a las &quot; + Now.ToString(&quot;HH:mm:ss&quot;)]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+    </FlowStep>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
   </Flowchart>
 </Activity>

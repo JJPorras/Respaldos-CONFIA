@@ -1,5 +1,5 @@
 {
-  "Name": "RPA_Respaldos_Backup",
+  "Name": "RPA_CNF_Respaldos_D21",
   "ProjectType": "Process",
   "Description": "El robot automatiza el proceso de transferencia de respaldos de bases de datos de tres países hacia un servidor AWS, operando de forma autónoma según horarios programados en Orchestrator.",
   "MainFile": "Main.xaml"

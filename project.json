@@ -1,5 +1,5 @@
 {
-  "name": "RPA_Respaldos_Backup",
+  "name": "RPA_CNF_Respaldos_D21",
   "projectId": "af05d4d9-f47f-4f59-926b-68ba39b67484",
   "description": "El robot automatiza el proceso de transferencia de respaldos de bases de datos de tres países hacia un servidor AWS, operando de forma autónoma según horarios programados en Orchestrator.",
   "main": "Main.xaml",
@@ -14,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "25.10.6.0",
-  "projectVersion": "1.0.11",
+  "projectVersion": "1.0.5",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,

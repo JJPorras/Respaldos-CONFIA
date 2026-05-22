@@ -1,5 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Component" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Component" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="out_TransactionField1" Type="InArgument(x:String)" />
     <x:Property Name="in_TransactionType" Type="InArgument(x:String)" />
     <x:Property Name="out_Verified" Type="OutArgument(x:Boolean)" />
     <x:Property Name="out_ErrorMessage" Type="OutArgument(x:String)" />
@@ -106,263 +107,217 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Workflow: Verify_Backups&#xA;Descripcion: Ejecuta script PowerShell en el servidor 10.100.26.214 via RDP para verificar&#xA;que los archivos de respaldo existen y tienen fecha del dia actual segun el tipo de transaccion.&#xA;Escribe resultado en C:\Temp\verify_result.txt y lo lee via Notepad.&#xA;Argumentos: in_TransactionType (String), out_Verified (Boolean), out_ErrorMessage (String)" DisplayName="Verify_Backups" sap:VirtualizedContainerService.HintSize="1501,6278" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Workflow: Verify_Backups&#xA;Descripcion: Ejecuta script PowerShell en el servidor 10.100.26.214 via RDP para verificar&#xA;que los archivos de respaldo existen y tienen fecha del dia actual segun el tipo de transaccion.&#xA;Escribe resultado en C:\Temp\verify_result.txt y lo lee via Notepad.&#xA;Argumentos: in_TransactionType (String), out_Verified (Boolean), out_ErrorMessage (String)" DisplayName="Verify_Backups" sap:VirtualizedContainerService.HintSize="1404,5330" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="psScript" />
+      <Variable x:TypeArguments="x:String" Name="psResult" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log START" sap:VirtualizedContainerService.HintSize="630,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Starting workflow: Verify_Backups - Verificando archivos de respaldo tipo: &quot; + in_TransactionType]" />
-    <Sequence DisplayName="Precondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="630,122" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <ui:LogMessage DisplayName="Log START" sap:VirtualizedContainerService.HintSize="594,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Starting workflow: Verify_Backups - Verificando archivos de respaldo tipo: &quot; + in_TransactionType]" />
+    <Sequence DisplayName="Precondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="594,122" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Sequence>
-    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="630,5593" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence sap:VirtualizedContainerService.HintSize="594,4645" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="TRY - Action Verify_Backups" sap:VirtualizedContainerService.HintSize="596,5501" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-        <TryCatch.Try>
-          <Sequence DisplayName="SEQ - Verify Backups" sap:VirtualizedContainerService.HintSize="594,4613" sap2010:WorkflowViewState.IdRef="Sequence_5">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="resultPath" />
-              <Variable x:TypeArguments="x:String" Name="psResult" />
-              <Variable x:TypeArguments="x:String" Name="psScript" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log - Ver TransactionType" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;TransactionType = [&quot; + in_TransactionType + &quot;]&quot;]" />
-            <Assign DisplayName="Assign - Construir comando" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_1">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[psScript]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">["powershell -ExecutionPolicy Bypass -File C:\Temp\verify_backups.ps1 -TransactionType " + in_TransactionType]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="10.100.26.214 - Conexión a Escritorio remoto(" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="560,4203" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="40994508-9344-4db5-9ff2-a10724e03b23" Version="V2">
-              <uix:NApplicationCard.Body>
-                <ActivityAction x:TypeArguments="x:Object">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="558,3957" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Mostrar escritorio'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="524,194" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="40994508-9344-4db5-9ff2-a10724e03b23" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable DesignTimeRectangle="1019, 0, 5, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;uia automationid='307' cls='TrayShowDesktopButtonWClass' name='Mostrar escritorio' /&gt;" Guid="19f70864-7aa4-4af7-892b-2fba60e7122d" InformativeScreenshot="4df546b7a4fe701d52e3d1df675a2afc.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NClick.Target>
-                    </uix:NClick>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Barra Powershell" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="524,194" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="40994508-9344-4db5-9ff2-a10724e03b23" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable CVScreenId="81545729-670e-4353-b858-974de274a38e" CvElementArea="623, 6, 30, 28" CvType="Icon" DesignTimeRectangle="615, 0, 49, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;uia cls='MSTaskListWClass' name='Aplicaciones en ejecución' /&gt;&lt;uia automationid='{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe' name='Windows PowerShell' role='botón' /&gt;" Guid="9984cc7e-eb4a-4452-86dc-6036dd9116ae" ImageBase64="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" InformativeScreenshot="2ee32e3b9cce910060b1a6cf5de565b4.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NClick.Target>
-                    </uix:NClick>
-                    <Delay DisplayName="Delay - Esperar PowerShell" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="524,123" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Windows PowerShell" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="524,3386" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="34b7b882-e995-445c-b91f-fe35ff3abcf4" Version="V2">
-                      <uix:NApplicationCard.Body>
-                        <ActivityAction x:TypeArguments="x:Object">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,3140" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type - Comando PowerShell" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,297" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Text="[psScript]" Version="V5">
-                              <uix:NTypeInto.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="0, 0, 993, 519" ElementVisibilityArgument="Interactive" Guid="0b86e4b5-f738-4b6a-ba4c-5aeadd2ef747" InformativeScreenshot="bc64f82994696abfb66a862dad6f82b7.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                              </uix:NTypeInto.Target>
-                            </uix:NTypeInto>
-                            <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Send Hotkey - Ejecutar comando" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InteractionMode="HardwareEvents" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Shortcuts="[d(hk)][k(Enter)][u(hk)]" Version="V5" />
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type - Comando PowerShell" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Text="notepad.exe C:\Temp\verify_result.txt" Version="V5">
-                              <uix:NTypeInto.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="0, 0, 993, 519" ElementVisibilityArgument="Interactive" Guid="7e317793-3407-4b43-bd80-1ba3cafe9e08" InformativeScreenshot="bc64f82994696abfb66a862dad6f82b7.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                              </uix:NTypeInto.Target>
-                            </uix:NTypeInto>
-                            <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Send Hotkey - Ejecutar comando" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InteractionMode="HardwareEvents" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Shortcuts="[d(hk)][k(Enter)][u(hk)]" Version="V5" />
-                            <Delay DisplayName="Delay - Esperar ejecucion PS" Duration="00:00:05" sap:VirtualizedContainerService.HintSize="488,123" sap2010:WorkflowViewState.IdRef="Delay_2" />
-                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'CloseButton'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,245" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Version="V5">
-                              <uix:NClick.Target>
-                                <uix:TargetAnchorable CVScreenId="20c27a8b-4fff-43f8-ab7c-84143b4606cd" CvElementArea="953, 6, 17, 17" CvType="CloseButton" DesignTimeRectangle="953, 6, 17, 17" ElementType="Button" ElementVisibilityArgument="Interactive" Guid="f949667b-1bcb-43b9-ad72-951b26643bfe" InformativeScreenshot="b7760e587eb5fad1a1974a1d50abb1bd.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6" WaitForReadyArgument="Interactive" />
-                              </uix:NClick.Target>
-                            </uix:NClick>
-                            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="verify_result Bloc de notas" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1502" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="0b24b3dc-9a68-4e79-92c2-e10536d6e559" Version="V2">
-                              <uix:NApplicationCard.Body>
-                                <ActivityAction x:TypeArguments="x:Object">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                                  </ActivityAction.Argument>
-                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1256" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <ui:LogMessage DisplayName="Log - Ver TransactionType" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;TransactionType = [&quot; + in_TransactionType + &quot;]&quot;]" />
+      <Assign DisplayName="Assign - Construir comando" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[psScript]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["powershell -ExecutionPolicy Bypass -File C:\Temp\verify_backups.ps1 -TransactionType " + in_TransactionType]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="10.100.26.214 - Conexión a Escritorio remoto((2)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="560,4203" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="40994508-9344-4db5-9ff2-a10724e03b23" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="558,3957" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Mostrar escritorio'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="524,194" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="40994508-9344-4db5-9ff2-a10724e03b23" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable DesignTimeRectangle="1914, 0, 6, 50" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd aaname='Mostrar escritorio' cls='TrayShowDesktopButtonWClass' /&gt;" Guid="4331517d-c7d9-49a1-803b-3de7d94860c0" InformativeScreenshot="df14faee17e241bbaff27fcbcb833904.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Barra Powershell" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="524,194" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="40994508-9344-4db5-9ff2-a10724e03b23" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable CVScreenId="045639f3-0213-414e-b5fc-1111a5ac5570" CvElementArea="812, 7, 38, 35" CvType="Icon" DesignTimeRectangle="802, 0, 62, 50" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;uia cls='MSTaskListWClass' name='Aplicaciones en ejecución' /&gt;&lt;uia automationid='{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe' name='Windows PowerShell' role='botón' /&gt;" Guid="5b1c83bb-8327-4cb5-9152-5ef7452640d0" ImageBase64="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" InformativeScreenshot="75b250e0360ae818be7b06928eda0a05.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <Delay DisplayName="Delay - Esperar PowerShell" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="524,123" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Windows PowerShell(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="524,3386" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="34b7b882-e995-445c-b91f-fe35ff3abcf4" Version="V2">
+                <uix:NApplicationCard.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,3140" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type - Comando PowerShell" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,297" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Text="[psScript]" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="0, 0, 1119, 647" ElementVisibilityArgument="Interactive" Guid="0bb2efec-0c6d-4283-936e-2ee3708a4ff8" InformativeScreenshot="a839464ad099ca2271df9c1e16853673.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Send Hotkey - Ejecutar comando" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InteractionMode="HardwareEvents" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Shortcuts="[d(hk)][k(Enter)][u(hk)]" Version="V5" />
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type - Comando PowerShell" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Text="notepad.exe C:\Temp\verify_result.txt" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="0, 0, 1119, 647" ElementVisibilityArgument="Interactive" Guid="e7aee0ca-11ee-4adb-821b-796a299685fe" InformativeScreenshot="a839464ad099ca2271df9c1e16853673.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Send Hotkey - Ejecutar comando" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InteractionMode="HardwareEvents" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Shortcuts="[d(hk)][k(Enter)][u(hk)]" Version="V5" />
+                      <Delay DisplayName="Delay - Esperar ejecucion PS" Duration="00:00:05" sap:VirtualizedContainerService.HintSize="488,123" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'CloseButton'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,245" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="34b7b882-e995-445c-b91f-fe35ff3abcf4" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable CVScreenId="c7eca8a2-91e6-4cee-bfba-5a505ce29931" CvElementArea="1068, 8, 21, 21" CvType="CloseButton" DesignTimeRectangle="1069, 9, 21, 20" ElementType="Button" ElementVisibilityArgument="Interactive" Guid="904c2859-05ee-4d2c-946c-f762fd085f62" InformativeScreenshot="2576f4bb93b5563d79c1831b7a9177a0.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="verify_result Bloc de notas" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1502" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="0b24b3dc-9a68-4e79-92c2-e10536d6e559" Version="V2">
+                        <uix:NApplicationCard.Body>
+                          <ActivityAction x:TypeArguments="x:Object">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1256" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGetText DisplayName="Get Text 'editable text Editor de…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,194" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="0b24b3dc-9a68-4e79-92c2-e10536d6e559" TextString="[psResult]" Version="V5">
+                                <uix:NGetText.Target>
+                                  <uix:TargetAnchorable CVScreenId="11192b3c-6479-4f77-8c41-f7a085449ddc" CvElementArea="15, 38, 832, 542" CvType="InputBox" DesignTimeRectangle="9, 63, 832, 526" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Editor de texto' role='editable text' /&gt;" Guid="cd69c32a-c7b2-42f2-b81a-9878b434a2eb" InformativeScreenshot="6b047c3009bc72de7e9fb3f70c914666.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Remote Desktop Connection' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result.txt: Bloc de notas' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NGetText.Target>
+                              </uix:NGetText>
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Cerrar Notepad" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,245" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0b24b3dc-9a68-4e79-92c2-e10536d6e559" Version="V5">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable CVScreenId="ff2c03fc-d23c-4db5-9d12-6e6089fe3f01" CvElementArea="819, 7, 23, 23" CvType="CloseButton" DesignTimeRectangle="803, 1, 60, 37" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Cerrar' role='push button' /&gt;" Guid="4d2b6387-922b-48db-886d-7f4f3cdb437a" InformativeScreenshot="cc5986f9f64892edff6ba5c80c12a7df.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result.txt: Bloc de notas' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                              <If Condition="[psResult.Contains(&quot;RESULTADO: OK&quot;)]" DisplayName="IF - Verificar resultado" sap:VirtualizedContainerService.HintSize="452,757" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NGetText DisplayName="Get Text 'editable text Editor de…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,194" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="0b24b3dc-9a68-4e79-92c2-e10536d6e559" TextString="[psResult]" Version="V5">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="ce5b75d7-560e-4dcb-a3ae-2f8a7a810147" CvElementArea="15, 58, 534, 114" CvType="InputBox" DesignTimeRectangle="8, 51, 664, 419" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Editor de texto' role='editable text' /&gt;" Guid="512a722f-c004-4d9f-b3c3-b1d99c18eb39" InformativeScreenshot="77ab34a3da9e2687a11049e23b1f7fdb.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result: Bloc de notas' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Cerrar Notepad" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,245" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0b24b3dc-9a68-4e79-92c2-e10536d6e559" Version="V5">
-                                      <uix:NClick.Target>
-                                        <uix:TargetAnchorable CVScreenId="b24b4b69-36f6-4ac3-b777-ea979cc0b08a" CvElementArea="657, 6, 19, 18" CvType="CloseButton" DesignTimeRectangle="643, 1, 47, 30" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Cerrar' role='push button' /&gt;" Guid="16213681-8643-4137-88b0-c259ef146b0a" InformativeScreenshot="a69e5b86e1ff3abc40cfe313bf245c53.jpg" ScopeSelectorArgument="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result.txt: Bloc de notas' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
-                                      </uix:NClick.Target>
-                                    </uix:NClick>
-                                    <If Condition="[psResult.Contains(&quot;RESULTADO: OK&quot;)]" DisplayName="IF - Verificar resultado" sap:VirtualizedContainerService.HintSize="452,757" sap2010:WorkflowViewState.IdRef="If_1">
-                                      <If.Then>
-                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_2">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Boolean">[out_Verified]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Boolean">[True]</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </Sequence>
-                                      </If.Then>
-                                      <If.Else>
-                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,401" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Boolean">[out_Verified]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                          <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:String">[out_ErrorMessage]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:String">[psResult]</InArgument>
-                                            </Assign.Value>
-                                          </Assign>
-                                        </Sequence>
-                                      </If.Else>
-                                    </If>
+                                    <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[out_Verified]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">[True]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
                                   </Sequence>
-                                </ActivityAction>
-                              </uix:NApplicationCard.Body>
-                              <uix:NApplicationCard.OCREngine>
-                                <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                                  <ActivityFunc.Argument>
-                                    <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                                  </ActivityFunc.Argument>
-                                </ActivityFunc>
-                              </uix:NApplicationCard.OCREngine>
-                              <uix:NApplicationCard.TargetApp>
-                                <uix:TargetApp Area="2180, 198, 697, 518" FilePath="C:\Windows\System32\notepad.exe" IconBase64="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" InformativeScreenshot="25447201346b3c4365a9ee7be878a312.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result.txt: Bloc de notas' /&gt;" Version="V3">
-                                  <uix:TargetApp.WorkingDirectory>
-                                    <InArgument x:TypeArguments="x:String" />
-                                  </uix:TargetApp.WorkingDirectory>
-                                </uix:TargetApp>
-                              </uix:NApplicationCard.TargetApp>
-                            </uix:NApplicationCard>
-                          </Sequence>
-                        </ActivityAction>
-                      </uix:NApplicationCard.Body>
-                      <uix:NApplicationCard.OCREngine>
-                        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                          <ActivityFunc.Argument>
-                            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                          </ActivityFunc.Argument>
-                        </ActivityFunc>
-                      </uix:NApplicationCard.OCREngine>
-                      <uix:NApplicationCard.TargetApp>
-                        <uix:TargetApp Area="1951, 52, 993, 519" FilePath="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" IconBase64="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" InformativeScreenshot="08a7238bb4e13697f7fbc2286c2f2ebd.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" Version="V3" />
-                      </uix:NApplicationCard.TargetApp>
-                    </uix:NApplicationCard>
-                  </Sequence>
-                </ActivityAction>
-              </uix:NApplicationCard.Body>
-              <uix:NApplicationCard.OCREngine>
-                <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                  <ActivityFunc.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                  </ActivityFunc.Argument>
-                </ActivityFunc>
-              </uix:NApplicationCard.OCREngine>
-              <uix:NApplicationCard.TargetApp>
-                <uix:TargetApp Area="1920, 728, 1024, 40" FilePath="C:\Windows\explorer.exe" IconBase64="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" InformativeScreenshot="51b0bb006fe1daec393d951ff8f4f879.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Conexión a Escritorio remoto' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" Version="V3">
-                  <uix:TargetApp.WorkingDirectory>
-                    <InArgument x:TypeArguments="x:String" />
-                  </uix:TargetApp.WorkingDirectory>
-                </uix:TargetApp>
-              </uix:NApplicationCard.TargetApp>
-            </uix:NApplicationCard>
-          </Sequence>
-        </TryCatch.Try>
-        <TryCatch.Catches>
-          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-            <ActivityAction x:TypeArguments="s:Exception">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="594,633" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_5">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Boolean">[out_Verified]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_6">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[out_ErrorMessage]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[exception.Message]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:LogMessage DisplayName="Log ERROR" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Error en Verify_Backups: &quot; + exception.Message]" />
-                <Rethrow DisplayName="Rethrow - Propagar excepcion" sap:VirtualizedContainerService.HintSize="488,48" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
-              </Sequence>
-            </ActivityAction>
-          </Catch>
-        </TryCatch.Catches>
-      </TryCatch>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,401" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[out_Verified]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[out_ErrorMessage]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[psResult]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </ActivityAction>
+                        </uix:NApplicationCard.Body>
+                        <uix:NApplicationCard.OCREngine>
+                          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                            <ActivityFunc.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                            </ActivityFunc.Argument>
+                          </ActivityFunc>
+                        </uix:NApplicationCard.OCREngine>
+                        <uix:NApplicationCard.TargetApp>
+                          <uix:TargetApp Area="276, 220, 871, 648" FilePath="C:\Windows\System32\notepad.exe" IconBase64="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" InformativeScreenshot="d55e8f0d41bbee542114fc2a0961d22a.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' title='10.100.26.214 - Remote Desktop Connection' /&gt;&lt;wnd app='notepad.exe' cls='Notepad' title='verify_result.txt: Bloc de notas' /&gt;" Version="V3" />
+                        </uix:NApplicationCard.TargetApp>
+                      </uix:NApplicationCard>
+                    </Sequence>
+                  </ActivityAction>
+                </uix:NApplicationCard.Body>
+                <uix:NApplicationCard.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                    <ActivityFunc.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument>
+                  </ActivityFunc>
+                </uix:NApplicationCard.OCREngine>
+                <uix:NApplicationCard.TargetApp>
+                  <uix:TargetApp Area="192, 192, 1119, 647" FilePath="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABM3SURBVFhHlZd5fNP1/cc/qXiA3KVgRQ4FxIMJc+qGc0M3YdN5z82LqT830YlTEQEVBMpRSmnpfZC2aRqa3vRMz7TpkSZpk7S52uZOk17Qlrv0It/3+73Ht+g2u/12vB6P9x/5/pE8v6/3+/X+fMLYNOVIpR/Lq6s1tfIaTX1dXXFDfX18Y0Pj101Nqq2Njapf1NerHlbUq9Y0NrWsaGzS3NGsapmvVrfM0mq1N1vMhgC71Rxg6zIHWDvNAR0WU4DRaAhob28TGAwGgclkmqrpv/k/qaSoMLGkuHIyOiYH00QlmJdfDaWltRNVVYpL9Yr6vmZlk6NF06zT61or9HqtWK/XH9HpdNu1Wt1rra3aX7W0aB/X6to2aLX61VqdfrFWp59tNHXcZLPaAhwOa4DbaQ/weJwBLpcjwGazCWw2q8DpdApcLtd/BpdmygWV5bLMY2FZ15feEwv3/VAEP3kqF55+sQRf/kMp/unTcvwypAbCYxRcSoYa8otauGq5ZqxZpb2s0+kGjcY2r8VkMHSYjY0Ws7HQbDImGAyG/W1tbdvb2w1bjUbTC0ajaZPRaHqgra19kVbXfqvT0ycYHDov6O/v/8+AxYWVs+rramt37BT7BbOEIFiQjYLAQhAsrsSApQq8dWUzzl+rw+ANJli10Y4PbXbB8++7uLAkD4jznf7sEid3psLBldV0+OsaTX5Nq3ms3dh5xWzputDZ0dlrtXY6HHarweWyKxwOu9Rms8ZardajTqdzt9Pp/ENbW9v905m+p1aNdqVK2Wj63ZvJHJspRBYoRUFQIQqCq0hwVwMJlrWSYIWZBHc7ULCqF2esPY/rXxqF1DOTqDZOQEPbBFZrxrFMOcYVNVyBM/UXuYL6S1xe3SUuq2bYn13VyxXInVyN0uHXtHsmzNaeUaen5+rZc4MX+/r6BgoKCqqLi4sfmM71N1XIyh9vVja6frIphmOzUoAtzES2qADY4gpid9YTu0tDbIWR2N02YKt9FLB2iFZvuQbJuRw5fQDeASDvAGL3AIB7ANE1AGDvQ+zyIZo8AFoHh8ouDuuMfqhoHYe8xlEupXQAOhxnOa/X609NS+sRiUSvTOeaklyuEGhUqt/W1ir6Vq+L4tjtKcgWnEa2KB/Z4nJiwXXElqqJLTMQW2lFtqqb2JpzFPSTq/hVlJ+MNkBnD5CrF8ndB+jpR/IMAHafRfKeQ/INAvqGEHuGv60hwM4egGrdVfT0nIfOjg4uJSXFlZKS8sR0NtaqUQtKSuSCFrVqe1lZ7fCK++NgxgIeUIIsMBfZ4lJiwbXEliqJLdMTW9mB7B4XCdYM0O3rL+HWPRPUpAfsciNZu5FsXkSbD8nWA2jvRXL0IzkHAN1nkTxnkbrPIXkHgSxewFr9FfT2DqFep+OEQqElLS1t1XQ+ZmjTCjo7HDe167VhGRklIxs2pnEr1kmRzU9HtigHWFAxsjtqkC1tRLZMi2yFGdjdDmSr+3DG/RfgZ1tHsaAawGADNDkQzU4AiwvR4gbo8CB2eBE7fQDWHkRbLyLfdkc/YKsdoKr1Mnb3nIOGhgYeUCMWi2+fzseM7S0CY7tpjqGtVXIsXDq56ddS2PxSGd4SJCYWmIVsUSGxOyr/PofLjchWWomt8pJgzSCu2XKFojL8qDYAtVqQtJ2Aui4knRVQbyPSO4janIAGFxFfRg+SqRtJYQQsUw6jy+3D8vJyv1AorJZmZv7zumnXqwQOu2u5oU1TuXOX2L/lhVx45wM53rk2kwQLTwNblEdscdm3bW7m2wxsRQdNtXl1PwQ+doE+OzYONSqgBj1QYztAkxFJaQJoNiM1dyCpOgHUXUjqLiKNFanFBlSiuQ5ljQNgd7ggP7/gulAozJ7ONiW9Vimwdlo3tOvVqg+3Z/iffTkPPvhEjj98IoduDkxDtlBKLKiQ2BLexQbeRWTLp9JMbJUPb1s3SL/7dAQLqv1U1QxUrQasaQGStwLWapFq9Uh1bYCKdiSFAaneyLuHlK2YwAplH3ZZrZidnT0hFAqjp7Mxi8kk0LUoAwzthqf1rSrLe9sy/M+9kgd/2l6JW14spHl3piCbLyIWyEMWEFsi453EKSeXtxNb2YU3rfHQE68PYWr+OBXK/VRUx2GxgqOSBg5LG4HKlEiyZkCZGqlcwxdQmQYovWIc5SofWiwWzMyUjgmFws+n801JpawP0Kg1r6uUDb7X30rhnnslF956rxRffL0Y71wrAjZPiGxBBt6YxwI+1cCWVN8IzV0twJa349qnHBCWfBEzi0cws2QUpKXjmCWbgOzyScyp5DC3ioPcasC8GsR8OWB2NWBS3ig0qLvBZDKARHL6WkpKyovT2VhTQ73AYrbMaGpo+KSqovLilt/Ec8++lIMvv55Pz/++kO57RAIz5icRm59GbGEmscBcvt1wYzdOrR5gd7XQkodNsCt0gE5lXaJT2VdAmDNCwtxRSMkbp9SCCUo7MwmiQj+lF3IkLuYopQAoSnwNlC1u0Ou1kJEhuZSamrpuOh9rrJcLXE737c1NDaFZmWfGH308htv8XBZueT6LNj+fTY/8XAozlyQSm3uK2HwxsYVZxBbl8qvnxkwGK4DdqaTZa7XwzudeihAOU0TKBYhMvUQnRVcgKn2EojNGKUYyBrGnxynu9ATFZ05SlPg6hSVfAFWLFTQaNaSniwfS00WB0/lYo6KKT/AStbIhLT4+2//Ahhj4+WYJPvHLDHz8KTE+uuk0BK5MRjY3Htm875Z3Ntw4YUqR3VEFLFiBt6xshufeteH+yAE8EDUIB6OHMCT2AhyKu4iHE67gkcSrcDRpBEOTr2HYqVEMiR/F0MQB0Ok7oaGhHkSidJdYnD57Oh9rVFQGWMydazTN9cWhx6T+1Q/GcI88kYYPb0yl9Y8Jad0jKXjX2lMUMC+W2NzvWn2ahyS2qIBfPzwkCZbW4eMvGuiT/d2041APfn64n3YePYdfhA7S7rDztOf4BfzyxCX6KuIy7T15hXaGXabw5G40GM1YVVUFaWlp2oyMf7GkG2rLA1o02oeVjbXNu3aL/MvXRMGDPzqF961PwtUPJuLd98fD0nsT8NaFMcjmxCKbl8yn+tuLRA6yoDPAgngnK2Hdky34zg47vr/bBdv2dOMHX/XAh1/345/3DeBH35yD7QcG8eODQ/jJoWHctm8Io1PtYDYZQSYr5wELJRLJzOl8rKZSFlBXq3hSXl1pe/vdRO6OlZFwz/3xtPzeWFq6KobuWHkSApedpJlBJ4nNjiI2N56fR2Dz02+sHn4eeSeDimH5j+rppf8z0mt/7oTXPrLRGx874c2/uGnrZ156e4cP3tnpo3e/8NJ7u720dUc3JYnNYDDoobi4GESitJj09PTbpvMxZZPqpgpZ+cv5ufmDm5+J4ubfEY7Bd0fRomWRtODOEzR3STjMCgyjm+eHEZt9gticaGJz4uBGaNKJLZQCC8whFpgHQfdV0FOvaOiZt9rg2a1G+s3bFnjxPTP9blsr/emzStiz/wyFHBXT0bAECj0WT3HxqZCdJYVTp4T+6OjoA8fDjs+Pjor+/lFnaO+4TVZa8lFayunxjT+N5G6ZfQRvDwzDWYHHceaCMLx1XijMmHMUBbOOIJsVimz2CWSzo4DNifuHdp9GtjALZq8oxA2/UOBPn2+GJ17Q4C9fbYI3/liIxyMLUVbRCHZHN549N4hDw8NTdW5wEFxuN9bKa7mMDIlm3959H+z6YldwZETk3yHNJsvc4jMFh4RJqdzOnSLu96+J8KnN/AzG4MLgcJwx8yiymw8ju+UwsdsOE5sVyjvJQ/JOEpvLQ6YRWyDGW4NzaNWjMnpoUw3+eIuM3vhjFmZmycnh9FJvXx/2+HrI5/OR1+udKo/Hg3z5fD3g8XiuVVdXd4UeDf3ys08/WxF+PPwGZF1NTVCWRCKMj47mhEnJXGqGEFNFUoyJzcWDIXn4+c58eP1NCT6yMRmD7orCm2YeQzbjKLCZ4chuj+SDA2xuErJ5QpgRlIHBDxTgA48XwG+3pmN+kQo83b3odnuwv38ALl+6jCMjIzg2NobXrl3DixcvwuC5c9jt6QaHwwFer3dMo9GYwo6Ffblr167gsGNhApaanByUGBsbHRcVdTY+KvrqyeSj47FxEf5TCQmcVCKBM/n5XHFRCWRmlkJSsgxORJTjpzvOwDMvZeG968U4OygJbp2bgDfPS4QZC0/RolVi2vTrREiXVJKnuwfcbjddunSJJiYm4PrkJPE1OTlJY2NjdPXqFRi+OIzWng7s9rnB2mWF7u7usarq6s6vv/p6W8jBkDlMmJgoiIuKmnP44MH7v/nqq+dPhIUdiD4RURQXFdUqTEzsFAlTvOmpacMSkWhMIkr1Z4rTuMwMkV8izgRpZjGK0ivhcFgF/vEjGWx+sYgefVJC+w5KwGZzE+/K+fPnaXx8nK5fnwS/30+c30/Xr1+n0fFRGro0CFVdZXio+mssasvD7m4PdnZ2gsvluibJkMh379r94D/E5e9av/4Ht/74sceWvPryy/ft+eKLX0UcP/5pYkxscmJsbE18dLQx9mRUb2xk5EjsyRNcUtxJEKUkokSUBlJJFqampGONvJZ3Yqp1fEvHJ8ZxCpDzI8dxeH1yEi+MnMdKeyl8I9+Jeyt2YL4uC329Xuzq7AKnwwlyee1gyMGQv0xn+5s+fP99weMbN95075o1Ny9btmzWhoceCnr1lVce+HrPnqdOHDv29vGjR4+Fh4Y2R0dGTESdOIExkZEYExlBUScjyW63o91mp3Nnz+LItRE6d+Usmc6248j41Sn3ro1foypnKe2s/gA/LnuXMrVp5O51Yl9fLzqdTrCYLWB3OEYjIyOl07m+pyWLFwuWLl0645577pn5g3XrZm1Yv37upk2bfrR9+/ZPjhw9KkpMSLAkJCRcPxYaiqFHjmDYsVCKjIyk/oEB3gkaHh7GC5fPk9ScRmGqb7Cxu5Yuj14m7wU3bat4nZ6RbsQd5duozdVK/QN91NvbO5Xs9rZ27O3t4yIjIs3Tmf5Je/fuFXy+Y8ctH3744d379+8/JBKJzBKJZDhdLB4TiUSQkpoKsXFxGBp6DPbv30/Hjx+ngYEBsFgsPCBcuHieSq159EnVe/Bh+VtUYMminvNeErcn0xbpY/Bs5hOUqDxJDq+dfD0+HhD0Oh309fVjePiJK9N5/km5ubkzo6Ki3pBKpfqKiopxmUzml8lknEwmA5lMhmVlZVBSUoL5+fmQnp5OEbyD/f1gNBppcHBwKiS9Qz5K1kbDczk/oxeynqSsNjG5zzooXZcE/OdnRD+lpPpocntc5Ha7oLWlFXp7+/4zYGlpqaC4uPjZsrIyV1VVlZ+/dcjlcqirq+P/JqJSqUS1Wg0ajQZVKhXU1tZiUmIS9vb2Qns736ZeGBwaxMGhc6hxK+GDsjdxs/gxfD//DbT6OrC73wPpLcm4NedlPF4Zgg6nDe02G7RoNOD1+f59i2UymaCqquoWmUwWW15ePlpZWcnxcAqFAhsbG0GlUqFWqyWDwYC8W21tbTwkSTIkZLPZ0NBuIKfTiQMD/dTpNdMhxW78lfTH9FrOs5Sjk1DfQC8NDPQj31pZWxEZbe3ocjrRbDZDa2srWK220ciIfxOS8vJyQV5e3u0ymUxSWVk5WVNTw30Lx4OgTqcjs9lMVqsVbTYbdXZ2ol6vp7y8PKqtreP3Gen1enR47BRSu5ueznwEX8n9JWW0CMnd46S+vj7q7etF39SR50aXy8m7hy0tLWAymaBGLv/3a6awsFAgkUhuKigo+KampuZiXV2d/zvn+Dfknevq6ppaxk6nk3eN/2KSy+VUWFg49aypqQnajXoKrdtHv815GjJaTpHdYyOfz3vjTO7uBo/bza8WdNjtaDIaUdXcDF1W67WMDEnN/7uo/1EJCQnBpaWl0qampisqlcrf0tLC6XQ6PgQ8IPKADoeDd3EKUKPRUFFRESgU9VM7jZ9Pta4ZG4x14HA5kD/6PG43uV0ucjmdwIPZrFY0GgzQ1NjIw41VV1d37v1677YD+w/Mmc7zLxUXF7esqKgoSqlUOlpbWycMBoO/o6OD46EcDgdnt9vBarVyfGt4eP4lSktLQavVcg6nAxT1iqkQGXnXOzungPjqsHRMhalZqYSmpiauq6trrLW11cxfFnbv2n3jsvDfiE9zXFzc/KysrFcVCkWKRqNpMxgMF3hIHpB3yul08j/AOwtms5lTq9SQk5Pjr6qqnrTZ7X4enh8PPv319fXIz3N9fT0olUp+XPgXHOGdCwsLm7puRURE/Hdw34mHLCwsvDk7OztYJpNtVCqVbyqVyrCmpqbTarX6jFqtLmlubi6tqakpKSwszMvLy0tNEaYcOHL4yKGMDEl9XV3dkNVmu+bxeDj+nPbw5fFw/LzV1tYO8ZeDfXv3beOvWd+7sP4vysrKEqjV6gCLxRLQ3Nx8S3l5+YL8/PzgoqKiu4qLi/kxWCYWi5eFh4cvPXz48OL9+/fPDQk5NG/P7j0P8omMjDwp5Xdb+PHwyyfCT1yOiIgw889CQkL+wgfi0KFDc2JjY78H91eGlJbJ1yV8tQAAAABJRU5ErkJggg==" InformativeScreenshot="374f16d075676b6f7e00a39f4023b3fa.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='powershell.exe' cls='ConsoleWindowClass' title='Windows PowerShell' /&gt;" Version="V3">
+                    <uix:TargetApp.WorkingDirectory>
+                      <InArgument x:TypeArguments="x:String" />
+                    </uix:TargetApp.WorkingDirectory>
+                  </uix:TargetApp>
+                </uix:NApplicationCard.TargetApp>
+              </uix:NApplicationCard>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+          </ActivityFunc>
+        </uix:NApplicationCard.OCREngine>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="0, 1030, 1920, 50" FilePath="C:\Windows\explorer.exe" IconBase64="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" InformativeScreenshot="cd0a632256f7029f653e6fad4f3d3bcf.jpg" Selector="&lt;rdp app='mstsc.exe' cls='TscShellContainerClass' /&gt;&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' idx='*' /&gt;" Version="V3">
+            <uix:TargetApp.WorkingDirectory>
+              <InArgument x:TypeArguments="x:String" />
+            </uix:TargetApp.WorkingDirectory>
+          </uix:TargetApp>
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
     </Sequence>
-    <Sequence DisplayName="Postcondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="630,122" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Postcondition [OPTIONAL]" sap:VirtualizedContainerService.HintSize="594,122" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Sequence>
-    <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="630,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: Verify_Backups - Resultado: &quot; + out_Verified.ToString]" />
+    <ui:LogMessage DisplayName="Log END" sap:VirtualizedContainerService.HintSize="594,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ending workflow: Verify_Backups - Resultado: &quot; + out_Verified.ToString]" />
   </Sequence>
 </Activity>
